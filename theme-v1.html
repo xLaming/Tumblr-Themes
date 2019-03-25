@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+    <link rel="shortcut icon" href="{Favicon}"/>
+    <link rel="alternate" type="applicaoundedtion/rss+xml" href="{RSS}"/>
+	
+    <style type="text/css">
+    body {
+        background-color: #74b9ff;
+        color: #000;
+        font-size: 11px;
+        line-height: 120%;
+        font-family: arial;
+        word-wrap: break-word;
+    }
+     
+    a {
+        color: #5f27cd;
+        text-decoration: none;
+    }
+     
+    a:hover {
+        color: #341f97;
+        transition: all 0.3s ease-in-out;
+        -o-transition :all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+    }
+     
+    #container {
+        position: relative;
+        width: 700px;
+        margin: 50px auto;
+    }
+     
+    .entries {
+        position: relative;
+        width: 90%;
+        padding: 2.1%;
+		border-radius: 3px;
+        margin: 50px 0 10px 150px;
+		-webkit-box-shadow: 1px 6px 20px 0px rgba(0,0,0,0.4);
+		-moz-box-shadow: 1px 6px 20px 0px rgba(0,0,0,0.4);
+		box-shadow: 1px 6px 20px 0px rgba(0,0,0,0.4);
+        background: rgba(77, 165, 255, 0.6);
+        
+    }
+     
+    .entries img {
+        max-width: 100%;
+		border-radius: 3px;
+    }
+	
+	.entries p {
+        color: #ffffff;
+		font-size: 0.7rem;
+		text-shadow: -2px 1px 3px rgba(0,0,0,0.42);
+    }
+     
+    .entries .quote {
+        font-size: 16px;
+        line-height: 120%;
+        text-align: left;
+    }
+     
+    .entries .title {
+        font-size: 18px;
+    }
+     
+    .entries .link {
+        font-size: 18px;
+    }
+	
+	.permalink {
+		width: 100% !important;
+		margin: 50px 0 25px 100px !important;
+	}
+
+    #navbar {
+        background-color: #192a56;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 200px;
+        height: 100%;
+    }
+	
+	#navbar>img {
+		margin-left: 35%;
+		margin-top: 75%;
+		width: 50px;
+		height: 50px;
+	}
+
+	#navbar>ul {
+		position: fixed;
+		margin-top: 10%;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		width: 200px;
+		background-color: #273c75;
+		border-radius: 2px;
+	}
+
+	#navbar>ul>li>a {
+		display: block;
+		color: #eeeeee;
+		padding: 8px 16px;
+		text-decoration: none;
+		border-radius: 2px;
+	}
+
+	#navbar>ul>li>a:hover {
+		background-color: #40739e;
+		color: #16a085;
+	}
+     
+    #info {
+        left: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 0.6rem;
+        padding: 5px;
+		margin-top: 2%;
+        background-color: rgba(65, 130, 255, 0.8);
+        color: #222222;
+		border-radius: 3px;
+        text-align: left;
+		-webkit-box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
+		box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
+    }
+     
+    #info>a {
+		position: absolute;
+        color: #82ccdd;
+		right: 5%;
+    }
+	
+	#info>a:hover {
+        color: #78e08f;
+    }
+	
+	#tags {
+		text-align: center;
+		padding-top: 1%;
+	}
+	
+	#tags>a {
+		color: #fad390;
+	}
+	
+	#tags>a:hover {
+		color: #fa983a;
+	}
+	
+	.chat {
+		margin-bottom: 10px;
+	}
+     
+    .chat>li {
+        padding: 1%;
+        list-style-type: none;
+    }
+     
+    blockquote {
+		position: relative;
+		right: 3%;
+        padding-left: 1%;
+        border-left: 2px solid #feca57;
+    }
+    </style>
+</head>
+ 
+<body>
+	<div id="navbar">
+		<ul>
+			<li><a href="/">ínicio</a></li>
+			<li><a href="/ask">asks</a></li>
+			<li><a href="/">link #1</a></li>
+			<li><a href="/">link #2</a></li>
+			<li><a href="/">link #3</a></li>
+		</ul>
+		<img src="https://i.postimg.cc/WzVTS8nr/icon.png" alt="Profile" />
+	</div>
+
+    <div id="container">
+        {block:Posts}
+        <div class="entries{block:Permalink} permalink{/block:Permalink}">
+			{block:Text}
+				{block:Title}
+					<div class="title">{Title}</div>
+				{/block:Title}
+				{Body}
+			{/block:Text}
+
+			{block:Photo}
+				<a href="{Permalink}">
+				<img src="{PhotoURL-500}" width="100%"></a>
+				{block:Caption}{Caption}{/block:Caption}
+			{/block:Photo}
+				 
+			{block:Photoset}
+				{Photoset-500}
+				{block:Caption}{Caption}{/block:Caption}
+			{/block:Photoset}
+				 
+			{block:Video}
+				{Video-400}
+			{/block:Video}
+				 
+			{block:Link}
+				<div class="link">
+				<a href="{URL}">{Name}</a></div>
+				{block:Description}{Description}{/block:Description}
+			{/block:Link}
+				 
+			{block:Quote}
+				<div class="quote">“{Quote}”</div>
+				<p>
+				{block:Source}{Source}{/block:Source}<br>
+			{/block:Quote}
+				 
+			{block:Audio}
+				{block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}
+			{/block:Audio}
+				 
+			{block:Chat}
+				<div class="chat">
+				{block:Lines}
+					<li class="{Alt}">
+					{block:Label}{Label} {/block:Label}
+						{Line}
+					{/block:Lines}
+				</div>
+			{/block:Chat}
+				 
+			{block:Answer}
+				{Asker} asked: {Question} {Answer}
+			{/block:Answer}
+				 
+			{block:Date}
+				<div id="info">
+					{24Hour}:{Minutes}, {DayofMonth}/{MonthNumberWithZero}/{Year}
+					<a href="{Permalink}">{NoteCountWithLabel}</a>
+					{block:HasTags}
+						<br>
+						<div id="tags">
+							{block:Tags}<a href="{TagURL}">#{Tag}</a>&nbsp;{/block:Tags}
+						</div>
+					{/block:HasTags}
+				</div>
+			{/block:Date}
+				 
+		</div>
+        {/block:Posts}
+        </div>
+    </div>
+</body>
+</html>
